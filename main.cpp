@@ -23,6 +23,11 @@ string face_cascade_path, eye_cascade_path, nose_cascade_path, mouth_cascade_pat
 
 int main(int argc, char** argv)
 {
+    printf("argc %d\n", argc);
+    if (argc < 2) {
+        //printf("%s usage:\n", argv[0]);
+        //help();
+    }
     cv::CommandLineParser parser(argc, argv,
             "{eyes||}{nose||}{mouth||}{help h||}");
     if (parser.has("help"))
@@ -30,9 +35,10 @@ int main(int argc, char** argv)
         help();
         return 0;
     }
-    input_image_path = parser.get<string>(0);
-    face_cascade_path = parser.get<string>(1);
-    eye_cascade_path = parser.has("eyes") ? parser.get<string>("eyes") : "";
+    
+    input_image_path = "image.jpg"; // parser.get<string>(0);
+    face_cascade_path = "haarcascade_frontalface_default.xml";//parser.get<string>(1);
+    eye_cascade_path = "haarcascade_eye.xml";// parser.has("eyes") ? parser.get<string>("eyes") : "";
     nose_cascade_path = parser.has("nose") ? parser.get<string>("nose") : "";
     mouth_cascade_path = parser.has("mouth") ? parser.get<string>("mouth") : "";
     if (input_image_path.empty() || face_cascade_path.empty())
