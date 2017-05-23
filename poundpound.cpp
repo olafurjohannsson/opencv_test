@@ -13,8 +13,7 @@ int main()
     unsigned f = r0(b,e,a,f);
 
 
-    printf("0x%x\n", tgtaddr);
-    printf("0x%x\n", f);
+    printf("size %d\n", sizeof(tgtaddr));
 
     return 0;
 
